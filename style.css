@@ -44,3 +44,7 @@ li {
 form {
   display: flex;
 }
+
+ul li input:checked ~ h3 {
+  text-decoration: line-through;
+}

@@ -1,13 +1,12 @@
 let form = document.querySelector("form");
 let ul = document.querySelector("ul");
 let todoArr = [];
-let completed = [];
 
 form.addEventListener("submit", (event) => {
   event.preventDefault();
 
   if (event.target.todo.value !== "") {
-    todoArr.push(event.target.todo.value);
+    todoArr.push({ name: event.target.todo.value, completed: false });
     createUI(todoArr);
   }
   event.target.todo.value = "";
@@ -19,8 +18,11 @@ function createUI(arr) {
     let li = document.createElement("li");
     let input = document.createElement("input");
     input.type = "checkbox";
+    input.addEventListener("click", () => {
+      todo.completed = !todo.completed;
+    });
     let h3 = document.createElement("h3");
-    h3.innerText = todo;
+    h3.innerText = todo.name;
     let span = document.createElement("span");
     span.innerText = "Delete";
     span.id = i;
